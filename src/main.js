@@ -15,18 +15,38 @@ import router from './router'
 import '@/icons' // icon
 import '@/permission' // permission control
 
-// import * as 变量  得到的是一个对象{变量1：对象1，变量2：对象2}
+
+
+
 import * as directives from '@/directives'
 //  遍历所有导出的指令对象，完成自定义指令的全局注册
 Object.keys(directives).forEach(key => {
   // 全局注册自定义指令
-  Vue.directive(key,directives[key])
+  Vue.directive(key, directives[key])
 })
 
+import * as filters from '@/filters'
+//  遍历所有导出的指令对象，完成自定义指令的全局注册
+Object.keys(filters).forEach(key => {
+  // 全局注册过滤器
+  Vue.filter(key, filters[key])
+})
+
+
+
 // set ElementUI lang to EN
-Vue.use(ElementUI, { locale })
-// 如果想要中文版 element-ui，按如下方式声明
-// Vue.use(ElementUI)
+Vue.use(ElementUI, {
+  locale
+})
+
+// 全局注册组件
+/* import PageTools from '@/components/PageTools/index.vue'
+Vue.component('PageTools', PageTools); */
+
+// 全局注册组件
+import Components from '@/components/index'
+Vue.use(Components);
+
 
 Vue.config.productionTip = false
 

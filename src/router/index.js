@@ -57,6 +57,17 @@ export const constantRoutes = [{
       }
     }]
   },
+  // 上传文件
+  {
+    path: '/import',
+    hidden: true,
+    component: Layout,
+    children: [{
+      path: '', //什么都不写 表示默认的二级路由
+      component: () => import('@/views/import')
+    }]
+
+  },
 
   {
     path: '*',
